@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <style>
+    body {
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      background: #eeaeca;
+      background: radial-gradient(
+        circle,
+        rgba(238, 174, 202, 1) 0%,
+        rgba(148, 187, 233, 1) 70%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #corpo {
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      background-color: aliceblue;
+      height: 430px;
+      width: 350px;
+
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+    }
+    #entrar {
+      border: 0;
+      color: aliceblue;
+      background: #ff7db5;
+      background: linear-gradient(
+        316deg,
+        rgba(255, 125, 181, 1) 0%,
+        rgba(62, 125, 207, 1) 70%
+      );
+      height: 40px;
+      width: 250px;
+      margin-top: 30px;
+      border-radius: 20px;
+    }
+    #com {
+      margin-top: -60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #fin {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-bottom: 110px;
+      text-align: center;
+    }
+    #email {
+      border-radius: 1cqi;
+      border: none; /* remove bordas */
+      border-bottom: 2px solid #ccc; /* borda inferior cinza */
+      padding: 8px 0;
+      outline: none; /* remove outline azul */
+      background: transparent;
+      font-size: 16px;
+      color: #333;
+    }
+    #password {
+      border-radius: 10px;
+      border: none; /* remove bordas */
+      border-bottom: 2px solid #ccc; /* borda inferior cinza */
+      padding: 8px 0;
+      outline: none; /* remove outline azul */
+      background: transparent;
+      font-size: 16px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px; /* espaço entre label e input */
+      font-size: 14px;
+      color: #3f3b3b;
+    }
+
+    #email:focus {
+      border-bottom-color: #666;
+    }
+    #password:focus {
+      border-bottom-color: #666;
+    }
+  </style>
+  <body>
+    <div id="corpo">
+      <h2>Cadastro Aluno</h2>
+
+      <div id="com">
+        <label for="email">Email:</label>
+
+        <input type="text" id="email" placeholder=" Insira seu email" />
+      </div>
+
+      <br />
+
+      <div id="fin">
+        <label for="senha">Senha:</label>
+        <input type="password" id="password" placeholder="insira sua senha" />
+        <br /><br />
+      </div>
+
+      <input type="button" value="ENTRAR" id="entrar" />
+    </div>
+  </body>
+  <script>
+    document.getElementById("entrar").addEventListener("click", function () {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("password").value;
+
+      if (email === "admin@admin.com" && senha === "admin") {
+        window.location.href = "sistema.html";
+      } else {
+        alert("Senha ou email inválido.");
+      }
+    });
+  </script>
+</html>

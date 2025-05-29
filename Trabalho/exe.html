@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+    <link rel="stylesheet" href="style_principal.css">
+</head>
+<body>
+    <form id="formulario">
+        <fieldset>
+            <legend>Form</legend>
+            
+            <label for="id_nome">Nome:
+                <input 
+                type="text"
+                id="id_nome"
+                placeholder="Informe o nome"
+                required
+                class="campo"
+                >
+            </label>
+
+            <div class="botoes">
+                <button type="submit">Abrir</button>
+            </div>
+        </fieldset>
+    </form>
+
+    <dialog id="dialogTela">
+        <fieldset>
+            <legend>Tela modal</legend>
+            
+            <label for="id_nome">Nome:
+                <input 
+                type="text"
+                id="id_nome"
+                placeholder="Informe o nome"
+                required
+                class="campo"
+                >
+            </label>
+
+            <div class="botoes">
+                <button id="link">Google</button>
+                <button id="fechar">Fechar</button>
+            </div>
+        </fieldset>
+    </dialog>
+
+    <script>
+        let form = document.getElementById("formulario");
+        let dialogTela = document.getElementById("dialogTela");
+        let fechar = document.getElementById("fechar");
+        let link = document.getElementById("link");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            dialogTela.showModal();
+        });
+
+        link.onclick = (e) => {
+            window.location.href = "https://www.google.com";
+        }
+
+        fechar.onclick = (e) => {
+            dialogTela.close();
+        }
+
+        </script>
+</body>
+</html>
+
+        

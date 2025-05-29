@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Esportes de alunos</title>
+  </head>
+  <style>
+    body {
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #eeaeca;
+      background: radial-gradient(
+        circle,
+        rgba(238, 174, 202, 1) 0%,
+        rgba(148, 187, 233, 1) 70%
+      );
+    }
+    #corpo {
+      display: flex;
+      flex-direction: column;
+      height: 490px;
+      width: 400px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 105px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 20px;
+    }
+
+    #father {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 30px;
+      margin-top: -90px;
+    }
+    #son {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    header {
+      margin-bottom: 128px;
+    }
+    #name {
+      border-radius: 10px;
+      background: transparent;
+      line-height: 30px;
+      width: 240px;
+      outline: none;
+      padding: 0;
+      border: none; /* remove bordas */
+      border-bottom: 2px solid #ccc; /* borda inferior cinza */
+      padding: 8px 0;
+      outline: none; /* remove outline azul */
+      background: transparent;
+      font-size: 16px;
+      color: #333;
+    }
+    #name:focus {
+      border-bottom-color: #5c5454;
+    }
+    #sport {
+      border-radius: 10px;
+      background: transparent;
+      line-height: 30px;
+      width: 200px;
+      outline: none;
+      padding: 0;
+      border: none; /* remove bordas */
+      border-bottom: 2px solid #ccc; /* borda inferior cinza */
+      padding: 8px 0;
+      outline: none; /* remove outline azul */
+      background: transparent;
+      font-size: 16px;
+      color: #333;
+    }
+    #sport:focus {
+      border-bottom-color: #666;
+    }
+    #id_cadastrar {
+      border: 0;
+      color: aliceblue;
+      background: #084a11;
+      background: linear-gradient(
+        90deg,
+        rgba(8, 74, 17, 1) 0%,
+        rgba(9, 121, 37, 1) 35%,
+        rgba(5, 255, 68, 1) 100%
+      );
+      height: 40px;
+      width: 200px;
+      margin-top: 30px;
+      border-radius: 20px;
+    }
+    #id_listar {
+      border: 0;
+      color: aliceblue;
+      background: #ff7db5;
+background: linear-gradient(
+  316deg,
+  rgba(255, 125, 181, 1) 0%,
+  rgba(62, 125, 207, 1) 70%
+);
+      height: 40px;
+      width: 200px;
+      margin-top: 0px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+    #listaAlunos {
+      background-color: aliceblue;
+      border-radius: 10px;
+     
+      
+      
+    }
+    #odin{
+      display: flex;
+    flex-direction: row; 
+    justify-content: center;
+     }
+
+  </style>
+
+
+  <body>
+    <form id="formulario">
+      <div id="corpo">
+        <header>
+          <h2>Alunos por Modalidade</h2>
+        </header>
+
+        
+
+        <div id="father">
+          Nome:<input
+            type="text"
+            name=""
+            id="name"
+            placeholder="Insira o nome do aluno"
+          />
+        </div>
+
+        <div id="son">
+          Modalidade:<input
+            type="text"
+            id="sport"
+            placeholder="Insira a modalidade"
+          />
+        </div>
+
+      
+      <div id="odin"></div>
+        <input type="submit" value="Cadastrar" id="id_cadastrar" />
+
+        <input type="button" value="Listar Todos" id="id_listar" />
+      </div>
+    </div>
+
+      <div id="listaAlunos"></div>
+    </form>
+
+    <script type="module" src="sistema.js"></script>
+  </body>
+</html>
