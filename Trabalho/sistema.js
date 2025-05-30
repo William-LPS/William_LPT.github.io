@@ -82,13 +82,13 @@ listar.addEventListener("click", (evento) => {
 const dialog = document.createElement("dialog"); //Cria um novo elemento HTML dialog
 dialog.innerHTML = `
   <form method="dialog" id="editarForm">
-    <h3>Editar Aluno</h3>
+    <h3>Editar Aluno/Modalidade:</h3>
     <label for="editNome">Nome:</label>
     <input type="text" id="editNome" required />
     <label for="editEsporte">Esporte:</label>
     <input type="text" id="editEsporte" required />
     <input type="hidden" id="editIndex" />
-    <button type="submit">Salvar</button>
+    <button type="submit" id="salvarForm">Salvar</button>
     <button type="button" id="cancelarEditar">Cancelar</button>
   </form>
 `; // Dentro dela vai ter esse texto que em cada elemento que for editado ele vai ser chamado abaixo
