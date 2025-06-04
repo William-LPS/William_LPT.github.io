@@ -1,41 +1,36 @@
-import Aluno from "./Aluno.js"; //Importando um arquivo externo
+import Aluno from "./Aluno.js";
 
-let alunos = JSON.parse(localStorage.getItem("alunos")) || []; //Transforma o bloco de códigos de texto em um array no Local Storage.
-const form = document.querySelector("#formulario");
-
+let alunos = JSON.parse(localStorage.getItem("alunos")) || [];
 form.addEventListener("submit", (evento) => {
-  //Um evento a partir do submit do input(Quando ele clica acontece esse evento)
   evento.preventDefault();
 
-  const nome = document.getElementById("name").value.trim(); //Tá pegando do input o valor e está guardando em uma constante.
+  const nome = document.getElementById("name").value.trim();
   const esporte = document.getElementById("sport").value.trim();
 
   if (!nome || !esporte) {
     alert("Por favor, preencha nome e esporte.");
-    return; // impede adicionar aluno vazio
+    return;
   }
 
-  let aluno = new Aluno(); //Novo aluno vai ser criado
-  aluno.setNome(nome); // e ele vai criar a chave com o valor do input
+  let aluno = new Aluno();
+  aluno.setNome(nome);
   aluno.setEsporte(esporte);
 
   alunos.push({
-    chave: aluno.getNome(), //vai puxar esse valor no local storage
+    chave: aluno.getNome(),
     valor: aluno.getEsporte(),
   });
 
-  localStorage.setItem("alunos", JSON.stringify(alunos)); //Pega o bloco do local storage e transforma em um texto .JSON
+  localStorage.setItem("alunos", JSON.stringify(alunos));
 
-  form.reset(); //Redefine o formulario
+  form.reset();
 });
 
-// Função para listar alunos
 function listarAlunos() {
   const lista = JSON.parse(localStorage.getItem("alunos")) || [];
-  let listaHTML = ""; //cria um campo na pagina do html
+  let listaHTML = "";
 
   lista.forEach((aluno, index) => {
-    //Percorre os elementos e cria o texto no campo do html
     listaHTML += `
       <p>
         <strong>Nome:</strong> ${aluno.chave} | 
@@ -45,20 +40,18 @@ function listarAlunos() {
       </p>`;
   });
 
-  document.getElementById("listaAlunos").innerHTML = listaHTML; // o campo da div no html vai receber essa lista
+  document.getElementById("listaAlunos").innerHTML = listaHTML;
 
-  // Botões excluir
   document.querySelectorAll(".excluir").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const index = e.target.getAttribute("data-index");
       lista.splice(index, 1);
       localStorage.setItem("alunos", JSON.stringify(lista));
-      alunos = lista; // Atualiza a variável global também
+      alunos = lista;
       listarAlunos();
     });
   });
 
-  // Botões editar
   document.querySelectorAll(".editar").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const index = e.target.getAttribute("data-index");
@@ -71,15 +64,13 @@ function listarAlunos() {
   });
 }
 
-// Botão listar todos
 let listar = document.getElementById("id_listar");
 listar.addEventListener("click", (evento) => {
-  // Quando clicar no botão ele pega a id dele e chama a função listarAluno's
   evento.preventDefault();
   listarAlunos();
 });
 
-const dialog = document.createElement("dialog"); //Cria um novo elemento HTML dialog
+const dialog = document.createElement("dialog");
 dialog.innerHTML = `
   <form method="dialog" id="editarForm">
     <h3>Editar Aluno/Modalidade:</h3>
@@ -91,17 +82,16 @@ dialog.innerHTML = `
     <button type="submit" id="salvarForm">Salvar</button>
     <button type="button" id="cancelarEditar">Cancelar</button>
   </form>
-`; // Dentro dela vai ter esse texto que em cada elemento que for editado ele vai ser chamado abaixo
+`;
 
-form.appendChild(dialog); //Executa esse bloco de códigos
+form.appendChild(dialog);
 
 document.getElementById("editarForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const index = document.getElementById("editIndex").value; //Pega o valor do id acima
-  const nome = document.getElementById("editNome").value.trim(); //Pega o valor do id e nao deixa ele colocar espaços em branco
-  const esporte = document.getElementById("editEsporte").value.trim(); // pega o valor do id e tambem nao deixa colocar espaços em branco
-
+  const index = document.getElementById("editIndex").value;
+  const nome = document.getElementById("editNome").value.trim();
+  const esporte = document.getElementById("editEsporte").value.trim();
   if (!nome || !esporte) {
     alert("Por favor, preencha nome e esporte.");
     return;
@@ -112,11 +102,11 @@ document.getElementById("editarForm").addEventListener("submit", (e) => {
     valor: esporte,
   };
 
-  localStorage.setItem("alunos", JSON.stringify(alunos)); // Converte o valor do JS para o texto .JSON e coloca o Storage editado
-  dialog.close(); // fecha o dialog
-  listarAlunos(); //retorna o campo da listagem dos alunos
+  localStorage.setItem("alunos", JSON.stringify(alunos));
+  dialog.close();
+  listarAlunos();
 });
 
 document.getElementById("cancelarEditar").addEventListener("click", () => {
-  dialog.close(); // quando clicar em fechar o dialog
+  dialog.close();
 });
