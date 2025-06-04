@@ -1,6 +1,9 @@
 import Aluno from "./Aluno.js";
 
 let alunos = JSON.parse(localStorage.getItem("alunos")) || [];
+
+const form = document.querySelector("#formulario");
+
 form.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
